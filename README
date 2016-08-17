@@ -3,7 +3,7 @@ Scores retrieved from www.hockey-reference.com
 Elo: https://en.wikipedia.org/wiki/Elo_rating_system
 Glicko2: http://www.glicko.net/glicko/glicko2.pdf
 
-Elo:
+### Elo:
 PIT - 1654
 STL - 1634
 WSH - 1625
@@ -35,7 +35,7 @@ VAN - 1442
 EDM - 1438
 TOR - 1431
 
-Glicko:
+### Glicko:
 PIT - 1618
 WSH - 1617
 STL - 1608
