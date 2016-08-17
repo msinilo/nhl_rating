@@ -69,4 +69,6 @@ TOR - 1409
   
 ***Lowest rated team that made the playoffs***: Minnesota  
 ***Highest rated team that did not make the playoffs***: Boston  
-Glicko RDs are all in the 53.5 - 56.5 range
+Glicko RDs are all in the 53.5 - 56.5 range  
+Both systems 'predicted' playoffs outcomes with the same accuracy - 10/15 series correct (using regular season ratings, not updating based on playoff scores). San Jose was the most surprising, they defeated higher rated teams twice (LAK & STL).  
+Glicko period was set to 4 days, otherwise it'd react to changes too slowly. This is much shorter than recommended period (should be 5-10 games), but our sample size is small (82 games).
