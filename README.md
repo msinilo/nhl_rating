@@ -71,4 +71,10 @@ TOR - 1409
 ***Highest rated team that did not make the playoffs***: Boston  
 Glicko RDs are all in the 53.5 - 56.5 range  
 Both systems 'predicted' playoffs outcomes with the same accuracy - 10/15 series correct (using regular season ratings, not updating based on playoff scores). San Jose was the most surprising, they defeated higher rated teams twice (LAK & STL).  
-Glicko period was set to 4 days, otherwise it'd react to changes too slowly. This is much shorter than recommended period (should be 5-10 games), but our sample size is small (82 games).
+Glicko period was set to 4 days, otherwise it'd react to changes too slowly. This is much shorter than recommended period (should be 5-10 games), but our sample size is small (82 games).  
+Script arguments:  
+- rating: Glicko or Elo
+- --tau: tau system parameter for Glicko2 (recommended range 0.3-1.2, the lower values prevent big volatility changes)
+- --period_days: day per rating period, Glicko2. 
+- --graph: output a SVG rating graph for a given team (e.g. --graph SJS for San Jose)
+- --verbose: verbose logging
