@@ -2,6 +2,8 @@ Python script calculating Elo/Glicko rating for the NHL teams in the 2015/16 reg
 Scores retrieved from www.hockey-reference.com  
 Elo: https://en.wikipedia.org/wiki/Elo_rating_system  
 Glicko2: http://www.glicko.net/glicko/glicko2.pdf  
+
+2017 season (Elo): https://github.com/msinilo/nhl_rating/blob/master/elo2017.md
   
 ### Elo:  
 PIT - 1654  
