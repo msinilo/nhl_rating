@@ -4,6 +4,7 @@ Elo: https://en.wikipedia.org/wiki/Elo_rating_system
 Glicko2: http://www.glicko.net/glicko/glicko2.pdf  
 
 2017 season (Elo): https://github.com/msinilo/nhl_rating/blob/master/elo2017.md
+2017 season (Glicko): https://github.com/msinilo/nhl_rating/blob/master/glicko2017.md
   
 ### Elo:  
 PIT - 1654  
