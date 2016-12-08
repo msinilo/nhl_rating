@@ -1,0 +1,32 @@
+### 2016/2017 season, Glicko (as of 8th Dec 2016)
+
+CBJ - 1616  
+PIT - 1608  
+MTL - 1589  
+NYR - 1587  
+OTT - 1567  
+WSH - 1566  
+CHI - 1565  
+PHI - 1563  
+BOS - 1561  
+STL - 1558  
+SJS - 1543  
+LAK - 1529  
+MIN - 1501  
+CGY - 1497  
+TBL - 1490  
+DET - 1478  
+NJD - 1475  
+NSH - 1471  
+FLA - 1467  
+WPG - 1466  
+ANA - 1463  
+CAR - 1459  
+EDM - 1458  
+TOR - 1444  
+NYI - 1443  
+VAN - 1438  
+BUF - 1428  
+DAL - 1379  
+COL - 1355  
+ARI - 1345  
