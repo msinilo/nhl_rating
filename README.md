@@ -81,3 +81,4 @@ Script arguments:
 - --period_days: day per rating period, Glicko2. 
 - --graph: output a SVG rating graph for a given team (e.g. --graph SJS for San Jose)
 - --verbose: verbose logging
+- --year: yyyy to generate results from given season (2016 = 2015/2016 by default)
