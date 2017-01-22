@@ -37,9 +37,9 @@ def GetK(numSamples, rating):
 
 	return 20
 
-def ParseTeam(team, games, firstTeam):
+def ParseTeam(team, games, firstTeam, year):
 	h = httplib2.Http()
-	url = 'http://www.hockey-reference.com/teams/' + team + '/2016.html'
+	url = 'http://www.hockey-reference.com/teams/' + team + '/' + str(year) + '.html'
 	print url
 
 	(resp_headers, content) = h.request(url, "GET")
@@ -77,7 +77,7 @@ def ParseTeam(team, games, firstTeam):
 
 	if firstTeam:
 		for team, _ in allTeams.iteritems():
-			ParseTeam(team, games, False)
+			ParseTeam(team, games, False, year)
 
 def G(rd):
 	piSqr = math.pi ** 2
@@ -154,17 +154,24 @@ def Glicko2(r, RD, sigma, periodScores, args):
 		v += (gj ** 2) * Euj * (1 - Euj)
 		dv += gj * (score.score - Euj)
 
-	v = 1 / v
-	dv *= v
+	if len(periodScores) > 0:
+		v = 1 / v
+		dv *= v
 
-	# Step 5
-	s = G2_NewSigma(sigma, dv, phi, v, args.tau)
+		# Step 5
+		s = G2_NewSigma(sigma, dv, phi, v, args.tau)
+	else:
+		s = sigma
 
 	# Step 6
 	phiStar = math.sqrt(phi ** 2 + s ** 2)
 
-	newPhi = 1 / math.sqrt(1 / (phiStar**2) + 1/v)
-	newMu = mu + (newPhi**2) * (dv/v)
+	if len(periodScores) > 0:
+		newPhi = 1 / math.sqrt(1 / (phiStar**2) + 1/v)
+		newMu = mu + (newPhi**2) * (dv/v)
+	else:
+		newMu = mu
+		newPhi = phiStar
 
 	r, RD = FromGlickScale(newMu, newPhi)
 
@@ -221,6 +228,7 @@ def RateGlicko(games, args):
 
 	# Last period
 	RateGlickoPeriod(periodGames, ratings, rds_sigmas, graphData, args)
+	#print rds_sigmas
 
 	return ratings, graphData
 
@@ -286,6 +294,7 @@ parser.add_argument("--tau", help="Glicko Tau parameter (usually 0.3-1.2)", defa
 parser.add_argument("--period_days", help="Days/Glicko period", default=12, type=int)
 parser.add_argument("--graph", help="Graph rating for given team")
 parser.add_argument("--verbose", help="Verbose logging", action='store_true')
+parser.add_argument("--year", help="Season", type=int, default=2016)
 args = parser.parse_args()
 
 if args.verbose:
@@ -293,8 +302,12 @@ if args.verbose:
 
 # Dictionary indexed by dates (ie. Oct 10, Nov 5)
 games = {}
+teamNames = { 	"TBL", "OTT", "MTL", "FLA", "BOS", "TOR", "BUF", "DET", "STL", "CHI", "DAL", "COL", \
+				"MIN", "WPG", "NSH", "WSH", "PIT", "NYR", "PHI", "NJD", "NYI", "CAR", "CBJ", "EDM", \
+				"SJS", "VAN", "CGY", "ARI", "ANA", "LAK" }
 
-ParseTeam("WSH", games, True)
+for t in teamNames:
+	ParseTeam(t, games, False, args.year)
 
 ratingFunc = RateElo if args.rating.upper() == "ELO" else RateGlicko
 
