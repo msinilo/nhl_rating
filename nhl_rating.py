@@ -248,8 +248,8 @@ def RateElo(games, args):
 
 			logging.info(g.teamA + " vs " + g.teamB + " : " + str(g.score))
 
-			expectedScoreA = 1 / (1 + pow(10, (ratingB - ratingA) / 400))
-			expectedScoreB = 1 / (1 + pow(10, (ratingA - ratingB) / 400))
+			expectedScoreA = 1 / (1 + pow(10.0, (ratingB - ratingA) / 400.0))
+			expectedScoreB = 1 / (1 + pow(10.0, (ratingA - ratingB) / 400.0))
 
 			samplesA = numSamples.get(g.teamA, 0) 
 			samplesB = numSamples.get(g.teamB, 0) 
@@ -257,8 +257,8 @@ def RateElo(games, args):
 			Ka = GetK(samplesA, ratingA)
 			Kb = GetK(samplesB, ratingB)
 
-			newRatingA = ratingA + Ka * (scoreA - expectedScoreA)
-			newRatingB = ratingB + Kb * (scoreB - expectedScoreB)
+			newRatingA = int(ratingA + Ka * (scoreA - expectedScoreA))
+			newRatingB = int(ratingB + Kb * (scoreB - expectedScoreB))
 
 			logging.info("ESA: " + str(expectedScoreA) + ", ESB: " + str(expectedScoreB))
 			logging.info("Old rating " + g.teamA + ": " + str(ratingA))
